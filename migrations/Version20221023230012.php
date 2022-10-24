@@ -1,0 +1,45 @@
+<?php
+
+declare(strict_types=1);
+
+namespace DoctrineMigrations;
+
+use Doctrine\DBAL\Schema\Schema;
+use Doctrine\Migrations\AbstractMigration;
+
+/**
+ * Auto-generated Migration: Please modify to your needs!
+ */
+final class Version20221023230012 extends AbstractMigration
+{
+    public function getDescription(): string
+    {
+        return '';
+    }
+
+    public function up(Schema $schema): void
+    {
+        // this up() migration is auto-generated, please modify it to your needs
+        $this->addSql('ALTER TABLE footer_icone DROP FOREIGN KEY FK_D48D67905A805D31');
+        $this->addSql('ALTER TABLE footer_icone DROP FOREIGN KEY FK_D48D67902412A144');
+        $this->addSql('ALTER TABLE github_page DROP FOREIGN KEY FK_E5BA54C1C4663E4');
+        $this->addSql('ALTER TABLE github_page DROP FOREIGN KEY FK_E5BA54C1D4327649');
+        $this->addSql('DROP TABLE footer');
+        $this->addSql('DROP TABLE footer_icone');
+        $this->addSql('DROP TABLE github');
+        $this->addSql('DROP TABLE github_page');
+    }
+
+    public function down(Schema $schema): void
+    {
+        // this down() migration is auto-generated, please modify it to your needs
+        $this->addSql('CREATE TABLE footer (id INT AUTO_INCREMENT NOT NULL, description VARCHAR(255) CHARACTER SET utf8mb4 NOT NULL COLLATE `utf8mb4_unicode_ci`, titre VARCHAR(255) CHARACTER SET utf8mb4 NOT NULL COLLATE `utf8mb4_unicode_ci`, PRIMARY KEY(id)) DEFAULT CHARACTER SET utf8mb4 COLLATE `utf8mb4_unicode_ci` ENGINE = InnoDB COMMENT = \'\' ');
+        $this->addSql('CREATE TABLE footer_icone (footer_id INT NOT NULL, icone_id INT NOT NULL, INDEX IDX_D48D67902412A144 (footer_id), INDEX IDX_D48D67905A805D31 (icone_id), PRIMARY KEY(footer_id, icone_id)) DEFAULT CHARACTER SET utf8mb4 COLLATE `utf8mb4_unicode_ci` ENGINE = InnoDB COMMENT = \'\' ');
+        $this->addSql('CREATE TABLE github (id INT AUTO_INCREMENT NOT NULL, nom_utilisateur VARCHAR(255) CHARACTER SET utf8mb4 NOT NULL COLLATE `utf8mb4_unicode_ci`, PRIMARY KEY(id)) DEFAULT CHARACTER SET utf8mb4 COLLATE `utf8mb4_unicode_ci` ENGINE = InnoDB COMMENT = \'\' ');
+        $this->addSql('CREATE TABLE github_page (github_id INT NOT NULL, page_id INT NOT NULL, INDEX IDX_E5BA54C1C4663E4 (page_id), INDEX IDX_E5BA54C1D4327649 (github_id), PRIMARY KEY(github_id, page_id)) DEFAULT CHARACTER SET utf8mb4 COLLATE `utf8mb4_unicode_ci` ENGINE = InnoDB COMMENT = \'\' ');
+        $this->addSql('ALTER TABLE footer_icone ADD CONSTRAINT FK_D48D67905A805D31 FOREIGN KEY (icone_id) REFERENCES icone (id) ON DELETE CASCADE');
+        $this->addSql('ALTER TABLE footer_icone ADD CONSTRAINT FK_D48D67902412A144 FOREIGN KEY (footer_id) REFERENCES footer (id) ON DELETE CASCADE');
+        $this->addSql('ALTER TABLE github_page ADD CONSTRAINT FK_E5BA54C1C4663E4 FOREIGN KEY (page_id) REFERENCES page (id) ON DELETE CASCADE');
+        $this->addSql('ALTER TABLE github_page ADD CONSTRAINT FK_E5BA54C1D4327649 FOREIGN KEY (github_id) REFERENCES github (id) ON DELETE CASCADE');
+    }
+}

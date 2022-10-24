@@ -29,7 +29,8 @@ class FooterCrudController extends AbstractCrudController
         return [
             IdField::new('id')->hideOnForm(),
             TextField::new('titre'),
-            TextEditorField::new('description')->setFormType(CKEditorType::class),
+            TextField::new('text'),
+            TextField::new('copyright'),
             AssociationField::new('icone_id')->setFormTypeOptionIfNotSet('by_reference', false)
 
         ];

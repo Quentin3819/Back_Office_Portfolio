@@ -28,7 +28,11 @@ class Footer
 
     #[ORM\Column(length: 255)]
     #[Groups(['read::Footer'])]
-    private ?string $description = null;
+    private ?string $text = null;
+
+    #[ORM\Column(length: 255)]
+    #[Groups(['read::Footer'])]
+    private ?string $copyright = null;
 
     #[ORM\Column(length: 255)]
     #[Groups(['read::Footer'])]
@@ -48,14 +52,26 @@ class Footer
         return $this->id;
     }
 
-    public function getDescription(): ?string
+    public function getText(): ?string
     {
-        return $this->description;
+        return $this->text;
     }
 
-    public function setDescription(string $description): self
+    public function setText(string $text): self
     {
-        $this->description = $description;
+        $this->text = $text;
+
+        return $this;
+    }
+
+    public function getCopyright(): ?string
+    {
+        return $this->copyright;
+    }
+
+    public function setCopyright(string $copyright): self
+    {
+        $this->copyright = $copyright;
 
         return $this;
     }
