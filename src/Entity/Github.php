@@ -26,6 +26,10 @@ class Github
 
     #[ORM\Column(length: 255)]
     #[Groups(['read::Github'])]
+    private ?string $titre = null;
+
+    #[ORM\Column(length: 255)]
+    #[Groups(['read::Github'])]
     private ?string $nom_utilisateur = null;
 
     #[ORM\ManyToMany(targetEntity: Page::class, inversedBy: 'githubs')]
@@ -40,6 +44,18 @@ class Github
     public function getId(): ?int
     {
         return $this->id;
+    }
+
+    public function getTitre(): ?string
+    {
+        return $this->titre;
+    }
+
+    public function setTitre(string $titre): self
+    {
+        $this->titre = $titre;
+
+        return $this;
     }
 
     public function getNomUtilisateur(): ?string
