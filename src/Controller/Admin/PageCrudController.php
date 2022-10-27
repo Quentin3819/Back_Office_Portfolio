@@ -30,6 +30,7 @@ class PageCrudController extends AbstractCrudController
             IdField::new('id')->hideOnForm(),
             TextField::new('titre'),
             TextEditorField::new('sous_titre')->setFormType(CKEditorType::class),
+            TextField::new('animateText'),
             ImageField::new('image')->setBasePath('upload/images/page')->setUploadDir('public/upload/images/page'),
         ];
     }

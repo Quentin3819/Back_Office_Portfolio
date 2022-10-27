@@ -36,6 +36,10 @@ class Page
 
     #[ORM\Column(length: 255, nullable: true)]
     #[Groups(['read::Page'])]
+    private ?string $animateText = null;
+
+    #[ORM\Column(length: 255, nullable: true)]
+    #[Groups(['read::Page'])]
     private ?string $image = null;
 
     #[ORM\ManyToMany(targetEntity: BlocLogo::class, inversedBy: 'bloc_texte_id')]
@@ -87,6 +91,18 @@ class Page
     public function setSousTitre(?string $sous_titre): self
     {
         $this->sous_titre = $sous_titre;
+
+        return $this;
+    }
+
+    public function getAnimateText(): ?string
+    {
+        return $this->animateText;
+    }
+
+    public function setAnimateText(?string $animateText): self
+    {
+        $this->animateText = $animateText;
 
         return $this;
     }
