@@ -32,6 +32,10 @@ class Page
 
     #[ORM\Column(length: 255, nullable: true)]
     #[Groups(['read::Page'])]
+    private ?string $iconePage = null;
+
+    #[ORM\Column(length: 255, nullable: true)]
+    #[Groups(['read::Page'])]
     private ?string $sous_titre = null;
 
     #[ORM\Column(length: 255, nullable: true)]
@@ -79,6 +83,18 @@ class Page
     public function setTitre(string $titre): self
     {
         $this->titre = $titre;
+
+        return $this;
+    }
+
+    public function getIconePage(): ?string
+    {
+        return $this->iconePage;
+    }
+
+    public function setIconePage(?string $iconePage): self
+    {
+        $this->iconePage = $iconePage;
 
         return $this;
     }

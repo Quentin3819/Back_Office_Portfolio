@@ -29,6 +29,7 @@ class PageCrudController extends AbstractCrudController
         return [
             IdField::new('id')->hideOnForm(),
             TextField::new('titre'),
+            TextField::new('iconePage'),
             TextEditorField::new('sous_titre')->setFormType(CKEditorType::class),
             TextField::new('animateText'),
             ImageField::new('image')->setBasePath('upload/images/page')->setUploadDir('public/upload/images/page'),
