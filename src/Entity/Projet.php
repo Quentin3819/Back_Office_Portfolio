@@ -24,7 +24,7 @@ class Projet
     #[Groups(['read::Projet'])]
     private ?int $id = null;
 
-    #[ORM\Column(length: 255)]
+    #[ORM\Column(length: 255, nullable: true)]
     #[Groups(['read::Projet'])]
     private ?string $image = null;
 
