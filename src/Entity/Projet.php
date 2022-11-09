@@ -32,7 +32,7 @@ class Projet
     #[Groups(['read::Projet'])]
     private ?string $titre = null;
 
-    #[ORM\Column(length: 255)]
+    #[ORM\Column(length: 2048)]
     #[Groups(['read::Projet'])]
     private ?string $description = null;
 
